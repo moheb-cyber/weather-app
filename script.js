@@ -1,4 +1,5 @@
 const apiKey = "4cc70d52ad9646d8c7062459c86c12f8";
+let currentTimezone = 0;
 
 async function getWeather() {
     try {
@@ -50,6 +51,23 @@ const windSpeed = (data.wind.speed * 3.6).toFixed(1);
 
 document.getElementById("wind").textContent =
     `${windSpeed} km/h`;
+    const sunrise = new Date(data.sys.sunrise * 1000);
+const sunset = new Date(data.sys.sunset * 1000);
+
+document.getElementById("sunrise").textContent =
+    sunrise.toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit"
+    });
+
+document.getElementById("sunset").textContent =
+    sunset.toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit"
+    });
+    currentTimezone = data.timezone;
+
+updateLocalTime();
 
 const weatherMain = data.weather[0].main;
 const weatherDescription = data.weather[0].description;
@@ -74,6 +92,17 @@ if (weatherMain === "Clear") {
 
 document.getElementById("description").textContent =
     `${weatherEmoji} ${weatherDescription}`;
+    const now = Math.floor(Date.now() / 1000);
+
+let dayNight;
+
+if (now >= data.sys.sunrise && now < data.sys.sunset) {
+    dayNight = "☀️ Day";
+} else {
+    dayNight = "🌙 Night";
+}
+
+document.getElementById("dayNight").textContent = dayNight;
     const weatherIcon = data.weather[0].icon;
 
 document.getElementById("weatherIcon").src =
@@ -86,6 +115,15 @@ document.getElementById("weatherIcon").src =
         error.message;
 }
 }
+function updateLocalTime() {
+    const localTime = new Date(
+        Date.now() + currentTimezone * 1000
+    );
+
+    document.getElementById("localTime").textContent =
+        localTime.toUTCString().slice(17, 22);
+}
+setInterval(updateLocalTime, 1000);
 
 document.getElementById("searchButton").addEventListener("click", getWeather);
 document.getElementById("cityInput").addEventListener("keydown", function (event) {
