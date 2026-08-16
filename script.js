@@ -33,11 +33,15 @@ document.getElementById("weatherIcon").hidden = true;
         document.getElementById("cityName").textContent =
     `${data.name}, ${data.sys.country}`;
 
+const temperature = Math.round(data.main.temp);
+
 document.getElementById("temperature").textContent =
-    `${data.main.temp}°C`;
+    `${temperature}°C`;
+
+const feelsLike = Math.round(data.main.feels_like);
 
 document.getElementById("feelsLike").textContent =
-    `${data.main.feels_like}°C`;
+    `${feelsLike}°C`;
 
 document.getElementById("humidity").textContent =
     `${data.main.humidity}%`;
