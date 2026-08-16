@@ -3,7 +3,14 @@ const apiKey = "4cc70d52ad9646d8c7062459c86c12f8";
 async function getWeather() {
     try {
         const city = document.getElementById("cityInput").value.trim();
+        if (city === "") {
+    document.getElementById("errorMessage").textContent =
+        "Please enter a city name.";
 
+    return;
+}
+          document.getElementById("errorMessage").textContent = "";
+          document.getElementById("searchButton").textContent = "Loading...";
         const response = await fetch(
             `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
         );
@@ -12,6 +19,7 @@ async function getWeather() {
 }
 
         const data = await response.json();
+        document.getElementById("searchButton").textContent = "Search";
 
         document.getElementById("cityName").textContent = data.name;
 
@@ -29,8 +37,11 @@ document.getElementById("wind").textContent =
 
 document.getElementById("description").textContent =
     data.weather[0].description;
-} catch (error) {
-    document.getElementById("errorMessage").textContent = error.message;
+}catch (error) {
+    document.getElementById("searchButton").textContent = "Search";
+
+    document.getElementById("errorMessage").textContent =
+        error.message;
 }
 }
 
