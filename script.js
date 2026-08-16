@@ -62,3 +62,8 @@ document.getElementById("weatherIcon").src =
 }
 
 document.getElementById("searchButton").addEventListener("click", getWeather);
+document.getElementById("cityInput").addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        getWeather();
+    }
+});
