@@ -121,3 +121,36 @@ h1 {
     text-align: center;
     font-size: 14px;
 }
+@media (max-width: 500px) {
+    body {
+        padding: 15px;
+    }
+
+    .weather-app {
+        padding: 25px 20px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .search-box {
+        flex-direction: column;
+    }
+
+    #searchButton {
+        width: 100%;
+    }
+
+    #temperature {
+        font-size: 52px;
+    }
+
+    .weather-details {
+        flex-direction: column;
+    }
+
+    .weather-details p {
+        padding: 12px;
+    }
+}
