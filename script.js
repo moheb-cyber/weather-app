@@ -9,6 +9,15 @@ async function getWeather() {
 
     return;
 }
+document.getElementById("cityName").textContent = "--";
+document.getElementById("temperature").textContent = "--°C";
+document.getElementById("description").textContent = "--";
+
+document.getElementById("feelsLike").textContent = "--°C";
+document.getElementById("humidity").textContent = "--%";
+document.getElementById("wind").textContent = "-- km/h";
+
+document.getElementById("weatherIcon").hidden = true;
           document.getElementById("errorMessage").textContent = "";
           document.getElementById("searchButton").textContent = "Loading...";
         const response = await fetch(
@@ -32,11 +41,18 @@ document.getElementById("feelsLike").textContent =
 document.getElementById("humidity").textContent =
     `${data.main.humidity}%`;
 
+const windSpeed = (data.wind.speed * 3.6).toFixed(1);
+
 document.getElementById("wind").textContent =
-    `${data.wind.speed} m/s`;
+    `${windSpeed} km/h`;
 
 document.getElementById("description").textContent =
     data.weather[0].description;
+    const weatherIcon = data.weather[0].icon;
+
+document.getElementById("weatherIcon").src =
+    `https://openweathermap.org/img/wn/${weatherIcon}@2x.png`;
+    document.getElementById("weatherIcon").hidden = false;
 }catch (error) {
     document.getElementById("searchButton").textContent = "Search";
 

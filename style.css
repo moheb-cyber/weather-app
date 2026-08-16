@@ -154,3 +154,12 @@ h1 {
         padding: 12px;
     }
 }
+#weatherIcon {
+    width: 100px;
+    height: 100px;
+    margin: 5px auto;
+}
+
+#weatherIcon:not([hidden]) {
+    display: block;
+}
