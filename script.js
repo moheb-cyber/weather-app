@@ -47,8 +47,29 @@ const windSpeed = (data.wind.speed * 3.6).toFixed(1);
 document.getElementById("wind").textContent =
     `${windSpeed} km/h`;
 
+const weatherMain = data.weather[0].main;
+const weatherDescription = data.weather[0].description;
+
+let weatherEmoji = "🌤️";
+
+if (weatherMain === "Clear") {
+    weatherEmoji = "☀️";
+} else if (weatherMain === "Clouds") {
+    weatherEmoji = "☁️";
+} else if (weatherMain === "Rain") {
+    weatherEmoji = "🌧️";
+} else if (weatherMain === "Drizzle") {
+    weatherEmoji = "🌦️";
+} else if (weatherMain === "Thunderstorm") {
+    weatherEmoji = "⛈️";
+} else if (weatherMain === "Snow") {
+    weatherEmoji = "❄️";
+} else if (weatherMain === "Mist" || weatherMain === "Fog") {
+    weatherEmoji = "🌫️";
+}
+
 document.getElementById("description").textContent =
-    data.weather[0].description;
+    `${weatherEmoji} ${weatherDescription}`;
     const weatherIcon = data.weather[0].icon;
 
 document.getElementById("weatherIcon").src =
