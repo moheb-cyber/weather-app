@@ -1,0 +1,123 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #141e30, #243b55);
+    color: white;
+}
+
+.weather-app {
+    width: 100%;
+    max-width: 460px;
+    padding: 35px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 25px;
+    text-align: center;
+    font-size: 32px;
+}
+
+.search-box {
+    display: flex;
+    gap: 10px;
+}
+
+#cityInput {
+    flex: 1;
+    padding: 13px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    font-size: 15px;
+}
+
+#cityInput::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#cityInput:focus {
+    border-color: rgba(255, 255, 255, 0.7);
+}
+
+#searchButton {
+    padding: 13px 20px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    background: white;
+    color: #243b55;
+    transition: transform 0.2s;
+}
+
+#searchButton:hover {
+    transform: translateY(-2px);
+}
+
+.weather-info {
+    margin-top: 35px;
+    text-align: center;
+}
+
+#cityName {
+    margin: 0;
+    font-size: 26px;
+}
+
+#temperature {
+    margin: 15px 0 5px;
+    font-size: 64px;
+    font-weight: bold;
+}
+
+#description {
+    margin: 0;
+    font-size: 18px;
+    opacity: 0.8;
+    text-transform: capitalize;
+}
+
+.weather-details {
+    display: flex;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.weather-details p {
+    flex: 1;
+    margin: 0;
+    padding: 15px 8px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.1);
+    font-size: 13px;
+}
+
+.weather-details span {
+    display: block;
+    margin-top: 7px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#errorMessage {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+}
