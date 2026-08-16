@@ -7,6 +7,9 @@ async function getWeather() {
         const response = await fetch(
             `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
         );
+        if (!response.ok) {
+    throw new Error("City not found");
+}
 
         const data = await response.json();
 
@@ -26,9 +29,9 @@ document.getElementById("wind").textContent =
 
 document.getElementById("description").textContent =
     data.weather[0].description;
-    } catch (error) {
-        console.log(error);
-    }
+} catch (error) {
+    document.getElementById("errorMessage").textContent = error.message;
+}
 }
 
 document.getElementById("searchButton").addEventListener("click", getWeather);
