@@ -30,7 +30,8 @@ document.getElementById("weatherIcon").hidden = true;
         const data = await response.json();
         document.getElementById("searchButton").textContent = "Search";
 
-        document.getElementById("cityName").textContent = data.name;
+        document.getElementById("cityName").textContent =
+    `${data.name}, ${data.sys.country}`;
 
 document.getElementById("temperature").textContent =
     `${data.main.temp}°C`;
