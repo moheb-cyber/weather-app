@@ -1,4 +1,4 @@
-const apiKey = "4cc70d52ad9646d8c7062459c86c12f8";
+
 let currentTimezone = 0;
 
 async function getWeather() {
