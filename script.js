@@ -23,8 +23,8 @@ async function getWeather() {
         document.getElementById("searchButton").textContent = "Loading...";
 
         const response = await fetch(
-            `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
-        );
+    `http://localhost:3000/weather?city=${encodeURIComponent(city)}`
+);
 
         if (!response.ok) {
             throw new Error("City not found");
